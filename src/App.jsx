@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import profile from "./assets/profile.png";
 import dsweb from "./assets/dsjs.png";
 import dsjs from "./assets/dsai.png";
@@ -7,10 +7,20 @@ import png1 from "./assets/1.png";
 import png2 from "./assets/2.png";
 import png3 from "./assets/3.png";
 import cv from "./assets/sidowwwscv.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("project");
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
 
   const skills = [
     "React.js",
@@ -33,7 +43,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#070707] text-white font-sans antialiased selection:bg-orange-500 selection:text-white">
-      <nav className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-xl border-b border-white/[0.06] py-4 md:py-5 transition-all duration-300">
+      <nav data-aos="zoom-in" className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-xl border-b border-white/[0.06] py-4 md:py-5 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           <div className="text-xl font-bold tracking-tighter uppercase font-sans">
             Sidowwws
@@ -46,7 +56,10 @@ export default function App() {
             <a href="#about" className="hover:text-white transition">
               About
             </a>
-            <a href={cv} className="flex items-center gap-2 bg-white text-black px-5 py-2.5 font-bold text-xs hover:bg-gray-100 transition shadow-lg tracking-wider uppercase">
+            <a
+              href={cv}
+              className="flex items-center gap-2 bg-white text-black px-5 py-2.5 font-bold text-xs hover:bg-gray-100 transition shadow-lg tracking-wider uppercase"
+            >
               View CV
               <span className="bg-orange-600 text-white rounded-full p-1 flex items-center justify-center text-[10px]">
                 ➔
@@ -102,7 +115,10 @@ export default function App() {
 
             <div className="border-b border-white/10 w-full max-w-xs mx-auto"></div>
 
-            <a href={cv} className="flex items-center justify-center gap-3 bg-white text-black px-8 py-4 font-bold text-sm tracking-wider uppercase shadow-2xl mt-4 w-64 max-w-xs transition transform active:scale-95 mx-auto">
+            <a
+              href={cv}
+              className="flex items-center justify-center gap-3 bg-white text-black px-8 py-4 font-bold text-sm tracking-wider uppercase shadow-2xl mt-4 w-64 max-w-xs transition transform active:scale-95 mx-auto"
+            >
               view CV
               <span className="bg-orange-600 text-white rounded-full p-1.5 flex items-center justify-center text-xs">
                 ➔
@@ -112,7 +128,10 @@ export default function App() {
         </div>
       </nav>
 
-      <div id="home" className="relative w-full min-h-[80vh] lg:min-h-[90vh] lg:h-[90vh] rounded-b-[40px] md:rounded-b-[60px] overflow-hidden bg-gradient-to-b from-[#e63e13] via-[#a32a0d] to-[#120402] pt-32 pb-16 lg:py-0 flex flex-col justify-center">
+      <div
+        id="home" data-aos="fade-down"
+        className="relative w-full min-h-[80vh] lg:min-h-[90vh] lg:h-[90vh] rounded-b-[40px] md:rounded-b-[60px] overflow-hidden bg-gradient-to-b from-[#e63e13] via-[#a32a0d] to-[#120402] pt-32 pb-16 lg:py-0 flex flex-col justify-center"
+      >
         <div
           className="absolute inset-0 bg-cover bg-center md:bg-top opacity-50 mix-blend-luminosity pointer-events-none"
           style={{ backgroundImage: `url(${profile})` }}
@@ -181,7 +200,7 @@ export default function App() {
         </div>
       </div>
 
-      <div className="bg-[#070707] py-6 border-b border-white/5 overflow-hidden relative w-full select-none">
+      <div data-aos="zoom-in" className="bg-[#070707] py-6 border-b border-white/5 overflow-hidden relative w-full select-none">
         <style>{`
           @keyframes marquee {
             0% { transform: translateX(0%); }
@@ -244,7 +263,10 @@ export default function App() {
         </div>
       </div>
 
-      <div id="about" className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
+      <div
+        id="about" data-aos="fade-right"
+        className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16 md:mb-24">
           <div className="lg:col-span-6 space-y-3">
             <span className="text-orange-500 text-xs font-bold uppercase tracking-widest block font-mono">
@@ -270,7 +292,11 @@ export default function App() {
                 <br />
                 The Future Together
               </span>
-              <a href="https://wa.me/628989209979" target="_blank" className="flex items-center gap-2 bg-[#e63e13] text-white px-5 py-2.5 font-bold text-xs hover:bg-orange-700 transition shadow-lg uppercase tracking-wider">
+              <a
+                href="https://wa.me/628989209979"
+                target="_blank"
+                className="flex items-center gap-2 bg-[#e63e13] text-white px-5 py-2.5 font-bold text-xs hover:bg-orange-700 transition shadow-lg uppercase tracking-wider"
+              >
                 Hire me
                 <span className="bg-white text-orange-600 rounded-full p-1 flex items-center justify-center text-[10px]">
                   ➔
@@ -280,7 +306,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="w-full border-b border-white/10 mb-10 flex gap-8 text-base md:text-2xl font-black relative">
+        <div data-aos="fade-up" className="w-full border-b border-white/10 mb-10 flex gap-8 text-base md:text-2xl font-black relative">
           <button
             onClick={() => setActiveTab("project")}
             className={`italic pb-4 transition-all duration-300 relative tracking-tight ${
@@ -310,7 +336,7 @@ export default function App() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div data-aos="zoom-in" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {activeTab === "project"
             ? projectImages.map((src, index) => (
                 <div
